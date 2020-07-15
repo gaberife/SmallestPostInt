@@ -12,11 +12,15 @@ class Solution {
             }
             i++;
         }
+        if(largest(A) < 0)
+            answer = 1;
+        else if( answer == 0)
+            answer = largest(A)+1;
         return answer;
     }
 
     public static int[] counter(int[] A){
-        int size = largest(A); //Finds largest number in the original array
+        int size = largest(A) + 1; //Finds largest number in the original array
         int[] count = new int[size]; //Assigns that size to the counter array
         for (int i = 0; i < size; i++)
             if (search(A, i))
@@ -40,11 +44,11 @@ class Solution {
     static int largest(int[] arr){
         int i;
         int max = arr[0];
-        for (i = 1; i < arr.length; i++)
-
+        for (i = 1; i < arr.length; i++) {
             if (arr[i] > max)
                 max = arr[i];
-        return max + 1; //Accounts for the maximum digit within the counter
+        }
+        return max; //Accounts for the maximum digit within the counter
     }
 
     public static void main(String[] args) throws IOException {
